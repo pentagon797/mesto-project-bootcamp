@@ -10,4 +10,4 @@
 
 В планы по разработке этого проекта входит доработка сайта с помощью JavaScript, реализация интерактивности элементов сайта с пользователем.
 
-ссылка на проект: https://pentagon797.github.io/russian-travel-bootcamp/
+ссылка на проект: https://pentagon797.github.io/mesto-project-bootcamp/
