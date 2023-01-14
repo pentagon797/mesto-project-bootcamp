@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="фотографии, проект mesto">
+  <meta name="author" content="Евгений Никуленко">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Проект Mesto</title>
+</head>
+<body class="page">
+  <header class="header">
+    <img class="logo" src="./images/logo.svg" alt="Логотип Mesto">
+  </header>
+  <main>
+    <section class="profile" aria-label="Профиль пользователя">
+      <div class="profile__edit-container">
+        <img class="profile__avatar" src="./images/Cousteau.jpg" alt="Аватар пользователя">
+        <div class="profile__info">
+          <p class="profile__name">Жак-Ив Кусто<button class="profile__edit-button link-opacity"></button></p>
+          <p  class="profile__description">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__add-button link-opacity"></button>
+    </section>
+    <section class="element">
+      <ul class="element__grid">
+        <li class="element__item">
+          <img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+          <div class="element__container">
+            <h3 class="element__text">Карачаевск</h3>
+            <button class="element__like-button link-opacity like-button_active"></button>
+          </div>
+        </li>
+        <li class="element__item">
+          <img class="element__image" src="./images/elbrus1.jpg" alt="Эльбрус Фото 1">
+          <div class="element__container">
+            <h3 class="element__text">Гора Эльбрус</h3>
+            <button class="element__like-button link-opacity like-button_active"></button>
+          </div>
+        </li>
+        <li class="element__item">
+          <img class="element__image" src="./images/dombai1.jpg" alt="Домбай Фото 1">
+          <div class="element__container">
+            <h3 class="element__text">Домбай</h3>
+            <button class="element__like-button link-opacity like-button_active"></button>
+          </div>
+        </li>
+        <li class="element__item">
+          <img class="element__image" src="./images/elbrus2.jpg" alt="Эльбрус Фото 2">
+          <div class="element__container">
+            <h3 class="element__text">Гора Эльбрус</h3>
+            <button class="element__like-button link-opacity like-button_active"></button>
+          </div>
+        </li>
+        <li class="element__item">
+          <img class="element__image" src="./images/dombai2.jpg" alt="Домбай Фото 2">
+          <div class="element__container">
+            <h3 class="element__text">Домбай</h3>
+            <button class="element__like-button link-opacity like-button_active"></button>
+          </div>
+        </li>
+        <li class="element__item">
+          <img class="element__image" src="./images/karachaevo-cherkessia.jpg" alt="Карачаево-Черкессия">
+          <div class="element__container">
+            <h3 class="element__text">Карачаево-Черкессия"</h3>
+            <button class="element__like-button link-opacity like-button_active"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section class="popup popup_opened" aria-label="Всплывающее окно редактирования профиля">
+      <div class="popup__edit-form">
+        <p class="popup__title">Редактировать профиль</p>
+        <input type="text" class="popup__edit-name" placeholder="Имя пользователя">
+        <input type="text" class="popup__edit-description" placeholder="О себе">
+        <button class="popup__save-buttton">Сохранить</button>
+        <button class="popup__close-buttton link-opacity"></button>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <h1 class="footer__text">© 2023 Mesto Russia</h1>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.element {
+  padding-top: 51px;
+  max-width: 880px;
+  margin: 0 auto;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 928px) {
+  .element {
+    max-width: 590px;
+  }
+}
+
+@media (max-width: 600px) {
+  .element {
+    flex-direction: column;
+    max-width: 282px;
+    padding-top: 0;
+    margin-top: 36px;
+  }
+}
