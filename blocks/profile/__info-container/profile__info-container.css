@@ -1,0 +1,10 @@
+.profile__info-container {
+  display: flex;
+  align-items: baseline;
+}
+
+@media (max-width: 600px) {
+  .profile__info-container {
+    margin-left: 27px;
+  }
+}

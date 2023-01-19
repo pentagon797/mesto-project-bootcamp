@@ -1,15 +1,11 @@
 .popup__edit-form {
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  background-color: #FFFFFF;
-  padding: 36px;
-  position: relative;
+  margin-top: 19px;
 }
 
 @media (max-width: 600px) {
   .popup__edit-form {
-    padding: 25px 22px;
+    margin-top: 45px;
   }
 }
