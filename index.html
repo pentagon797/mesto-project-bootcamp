@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,6 @@
   <link rel="stylesheet" href="./pages/index.css">
   <title>Проект Mesto</title>
 </head>
-
 <body class="page">
   <header class="header">
     <img class="logo" src="./images/logo.svg" alt="Логотип Mesto">
@@ -29,73 +27,52 @@
       </div>
       <button class="profile__add-button link-opacity" type="button" aria-label="Добавить фото"></button>
     </section>
-    <section class="element">
-      <ul class="element__grid">
-        <li class="element__item">
-          <img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-          <div class="element__container">
-            <h3 class="element__text">Карачаевск</h3>
-            <button class="element__like-button link-opacity like-button_active" type="button"
-              aria-label="Лайкнуть фото"></button>
-          </div>
-        </li>
-        <li class="element__item">
-          <img class="element__image" src="./images/elbrus1.jpg" alt="Эльбрус Фото 1">
-          <div class="element__container">
-            <h3 class="element__text">Гора Эльбрус</h3>
-            <button class="element__like-button link-opacity like-button_active" type="button"
-              aria-label="Лайкнуть фото"></button>
-          </div>
-        </li>
-        <li class="element__item">
-          <img class="element__image" src="./images/dombai1.jpg" alt="Домбай Фото 1">
-          <div class="element__container">
-            <h3 class="element__text">Домбай</h3>
-            <button class="element__like-button link-opacity like-button_active" type="button"
-              aria-label="Лайкнуть фото"></button>
-          </div>
-        </li>
-        <li class="element__item">
-          <img class="element__image" src="./images/elbrus2.jpg" alt="Эльбрус Фото 2">
-          <div class="element__container">
-            <h3 class="element__text">Гора Эльбрус</h3>
-            <button class="element__like-button link-opacity like-button_active" type="button"
-              aria-label="Лайкнуть фото"></button>
-          </div>
-        </li>
-        <li class="element__item">
-          <img class="element__image" src="./images/dombai2.jpg" alt="Домбай Фото 2">
-          <div class="element__container">
-            <h3 class="element__text">Домбай</h3>
-            <button class="element__like-button link-opacity like-button_active" type="button"
-              aria-label="Лайкнуть фото"></button>
-          </div>
-        </li>
-        <li class="element__item">
-          <img class="element__image" src="./images/karachaevo-cherkessia.jpg" alt="Карачаево-Черкессия">
-          <div class="element__container">
-            <h3 class="element__text">Карачаево-Черкессия"</h3>
-            <button class="element__like-button link-opacity like-button_active" type="button"
-              aria-label="Лайкнуть фото"></button>
-          </div>
-        </li>
-      </ul>
+    <section class="element" aria-label="Карточки">
+      <ul class="element__grid"></ul>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__text">© 2023 Mesto Russia</p>
   </footer>
-  <div class="popup popup_opened">
+  <div class="popup popup_profile">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__edit-form" name="edit-profile">
-        <input type="text" class="popup__input" placeholder="Имя пользователя" name="edit-profile-name" required>
-        <input type="text" class="popup__input" placeholder="О себе" name="edit-profile-description" required>
-        <button class="popup__save-buttton" type="submit" aria-label="Сохранить изменения">Сохранить</button>
+      <form class="popup__edit-form" name="editProfileForm">
+        <input type="text" class="popup__input" placeholder="Имя пользователя" name="editProfileName" required autocomplete="off">
+        <input type="text" class="popup__input" placeholder="О себе" name="editProfileDescription" required autocomplete="off">
+        <button class="popup__save-buttton popup__save-buttton_profile" type="submit" aria-label="Сохранить изменения">Сохранить</button>
       </form>
-      <button class="popup__close-buttton link-opacity" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <button class="popup__close-buttton link-opacity popup__close-buttton_profile" type="button" aria-label="Закрыть всплывающее окно"></button>
     </div>
   </div>
+  <div class="popup popup_place">
+    <div class="popup__container">
+      <h3 class="popup__title">Новое место</h3>
+      <form class="popup__edit-form" name="editPlaceForm">
+        <input type="text" class="popup__input" placeholder="Название" name="editPlaceName" required autocomplete="off">
+        <input type="text" class="popup__input" placeholder="Ссылка на картинку" name="editPlaceURL" required autocomplete="off">
+        <button class="popup__save-buttton" type="submit" aria-label="Добавить картинку">Создать</button>
+      </form>
+      <button class="popup__close-buttton link-opacity popup__close-buttton_place" type="button" aria-label="Закрыть всплывающее окно"></button>
+    </div>
+  </div>
+  <div class="popup popup_picture">
+    <div class="popup__figure">
+      <img class="popup__image" src="#" alt="#">
+      <p class="popup__figcaption"></p>
+      <button class="popup__close-buttton link-opacity popup__close-buttton_picture" type="button" aria-label="Закрыть всплывающее окно"></button>
+    </div>
+  </div>
+  <template id="element__template">
+    <li class="element__item">
+      <img class="element__image">
+      <button class="element__delete-button link-opacity" type="button" aria-label="Удалить карточку"></button>
+      <div class="element__container">
+        <h3 class="element__text"></h3>
+        <button class="element__like-button link-opacity" type="button" aria-label="Лайкнуть фото"></button>
+      </div>
+    </li>
+  </template>
+<script src="./script/script.js" defer></script>
 </body>
-
 </html>
