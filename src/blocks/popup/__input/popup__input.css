@@ -15,5 +15,6 @@
 }
 
 .popup__input:focus {
-  background-color: rgb(220, 255, 220);
+  background-color: rgba(200, 220, 255, 0.5);
 }
+

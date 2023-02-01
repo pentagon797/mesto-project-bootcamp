@@ -6,17 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="фотографии, проект mesto">
   <meta name="author" content="Евгений Никуленко">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Проект Mesto</title>
 </head>
 <body class="page">
   <header class="header">
-    <img class="logo" src="./images/logo.svg" alt="Логотип Mesto">
+    <img class="logo" alt="Логотип Mesto" src="<%=require('./images/logo.svg')%>">
   </header>
   <main>
     <section class="profile" aria-label="Профиль пользователя">
       <div class="profile__edit-container">
-        <img class="profile__avatar" src="./images/Cousteau.jpg" alt="Аватар пользователя">
+        <img class="profile__avatar" src="<%=require('./images/Cousteau.jpg')%>" alt="Аватар пользователя">
         <div class="profile__info">
           <div class="profile__info-container">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -37,30 +36,42 @@
   <div class="popup popup_profile">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__edit-form" name="editProfileForm">
-        <input type="text" class="popup__input" placeholder="Имя пользователя" name="editProfileName" required autocomplete="off">
-        <input type="text" class="popup__input" placeholder="О себе" name="editProfileDescription" required autocomplete="off">
-        <button class="popup__save-buttton popup__save-buttton_profile" type="submit" aria-label="Сохранить изменения">Сохранить</button>
+      <form class="popup__edit-form" name="editProfileForm" novalidate>
+        <label class="popup__label">
+          <input type="text" class="popup__input" placeholder="Имя пользователя" name="editProfileName" required autocomplete="off" minlength="2" maxlength="40">
+          <span class="popup__input-error" id="editProfileName-error"></span>
+        </label>
+        <label class="popup__label">
+          <input type="text" class="popup__input" placeholder="О себе" name="editProfileDescription" required autocomplete="off" minlength="2" maxlength="200">
+          <span class="popup__input-error" id="editProfileDescription-error"></span>
+        </label>
+        <button class="popup__save-buttton" type="submit" aria-label="Сохранить изменения">Сохранить</button>
       </form>
-      <button class="popup__close-buttton link-opacity popup__close-buttton_profile" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <button class="popup__close-buttton link-opacity" type="button" aria-label="Закрыть всплывающее окно"></button>
     </div>
   </div>
   <div class="popup popup_place">
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
-      <form class="popup__edit-form" name="editPlaceForm">
-        <input type="text" class="popup__input" placeholder="Название" name="editPlaceName" required autocomplete="off">
-        <input type="text" class="popup__input" placeholder="Ссылка на картинку" name="editPlaceURL" required autocomplete="off">
+      <form class="popup__edit-form" name="editPlaceForm" novalidate>
+        <label class="popup__label">
+          <input type="text" class="popup__input" placeholder="Название" name="editPlaceName" required autocomplete="off" minlength="2" maxlength="30">
+          <span class="popup__input-error" id="editPlaceName-error"></span>
+        </label>
+        <label class="popup__label">
+          <input type="url" class="popup__input" placeholder="Ссылка на картинку" name="editPlaceURL" required autocomplete="off">
+          <span class="popup__input-error" id="editPlaceURL-error"></span>
+        </label>
         <button class="popup__save-buttton" type="submit" aria-label="Добавить картинку">Создать</button>
       </form>
-      <button class="popup__close-buttton link-opacity popup__close-buttton_place" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <button class="popup__close-buttton link-opacity" type="button" aria-label="Закрыть всплывающее окно"></button>
     </div>
   </div>
   <div class="popup popup_picture">
     <div class="popup__figure">
       <img class="popup__image" src="#" alt="#">
       <p class="popup__figcaption"></p>
-      <button class="popup__close-buttton link-opacity popup__close-buttton_picture" type="button" aria-label="Закрыть всплывающее окно"></button>
+      <button class="popup__close-buttton link-opacity" type="button" aria-label="Закрыть всплывающее окно"></button>
     </div>
   </div>
   <template id="element__template">
@@ -73,6 +84,5 @@
       </div>
     </li>
   </template>
-<script src="./script/script.js" defer></script>
 </body>
 </html>
