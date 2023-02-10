@@ -9,6 +9,7 @@ import { enableValidation, setStatusButton } from './components/validate';
 import { addCard, editUserAvatar, editUserProfile, getAllInfo } from './components/api';
 let userID;
 
+
 function handlePlaceFormSubmit(e) {
   e.preventDefault();
   setStatusButton({
@@ -58,9 +59,9 @@ function renderInitialCards(dataCards) {
 }
 
 function renderProfile({ name, about, avatar }) {
-      if (name) profileName.textContent = name;
-      if (about) profileDescription.textContent = about;
-      if (avatar) profileAvatar.src = avatar;
+  if (name) profileName.textContent = name;
+  if (about) profileDescription.textContent = about;
+  if (avatar) profileAvatar.src = avatar;
 }
 
 function handleProfileFormSubmit(evt) {
@@ -75,7 +76,7 @@ function handleProfileFormSubmit(evt) {
     name: editProfileName.value,
     about: editProfileDescription.value
   })
-    .then(({name, about}) => {
+    .then(({ name, about }) => {
       renderProfile({ name, about })
       closePopup(popupProfile);
     })

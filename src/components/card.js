@@ -1,9 +1,9 @@
-let userID = null;
+let cardDeleteID = null;
 let deleteCardConfirm = null;
 
-import { elementTemplate,  popupImage, popupFigcaption, popupPicture, popupConfirmDelete, confirmDeleteForm, popupSaveButtonPlace } from './constants';
-import { openPopup, closePopup, setStatusButton } from './modal';
-import { addCard, removeCard, getAllInfo, putLike } from './api';
+import { elementTemplate,  popupImage, popupFigcaption, popupPicture, popupConfirmDelete, confirmDeleteForm } from './constants';
+import { openPopup, closePopup } from './modal';
+import { removeCard, putLike } from './api';
 
 export function createElementItem(dataElementItem, userID) {
   const elementItem = elementTemplate.cloneNode(true);
@@ -32,11 +32,7 @@ export function createElementItem(dataElementItem, userID) {
       })
   }
   function updateLikes (likes, userID) {
-    if(isLiked(dataElementItem.likes, userID)) {
-      elementLikeButton.classList.add('element__like-button_active');
-    } else {
-      elementLikeButton.classList.remove('element__like-button_active');
-    }
+    elementLikeButton.classList.toggle('element__like-button_active', isLiked(dataElementItem.likes, userID));
     cardLikeCounter.textContent = likes.length;
   }
   if (dataElementItem.owner._id !== userID) {
@@ -44,8 +40,9 @@ export function createElementItem(dataElementItem, userID) {
   }
   if (dataElementItem.owner._id === userID) {
     deleteElement.addEventListener('click', function () {
+      cardDeleteID = dataElementItem._id;
       confirmDeleteForm.removeEventListener('submit', deleteCardConfirm);
-      openPopupConfirm(dataElementItem._id, elementItem);
+      openPopupConfirm(elementItem);
     });
   }
   elementText.textContent = dataElementItem.name;
@@ -57,12 +54,17 @@ export function createElementItem(dataElementItem, userID) {
   return elementItem;
 }
 
-function openPopupConfirm(idCard, elementItem) {
+function deleteCard(cardElement) {
+  cardElement.remove();
+  cardElement = null;
+}
+
+function openPopupConfirm(elementItem) {
   deleteCardConfirm = (evt) => {
     evt.preventDefault();
-    removeCard(idCard, elementItem)
+    removeCard(cardDeleteID, elementItem)
       .then(() => {
-        elementItem.remove();
+        deleteCard(elementItem)
         closePopup(popupConfirmDelete);
       })
       .catch((error) => {

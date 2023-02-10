@@ -25,8 +25,6 @@ export function setStatusButton({ button, disabled, config, text }) {
   button.textContent = text;
 }
 
-
-
 function checkInputValidity(inputElement, formElement, config) {
   const isInputValid = inputElement.validity.valid;
   const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
