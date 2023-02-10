@@ -1,0 +1,9 @@
+.element__like-countner {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+  position: absolute;
+  top: 30px;
+  left: 248px;
+}

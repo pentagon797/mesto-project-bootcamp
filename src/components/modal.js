@@ -1,7 +1,5 @@
-import { profileName, profileDescription, editProfileName, editProfileDescription, popupProfile } from "./constants";
-
 function closePopupEsc(event) {
-  if (event.keyCode === 27) {
+  if (event.key === 'Escape') {
     const thisPopup = document.querySelector('.popup_opened');
     closePopup(thisPopup);
   }
@@ -24,9 +22,11 @@ export function handleClosePopup(e, modal) {
   }
 }
 
-export function editProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = editProfileName.value;
-  profileDescription.textContent = editProfileDescription.value;
-  closePopup(popupProfile);
+export function setStatusButton({button, text, disabled}) {
+  if(!disabled) {
+    button.disabled = false
+  } else {
+    button.disabled = 'disabled'
+  }
+  button.textContent = text;
 }

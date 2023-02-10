@@ -10,7 +10,7 @@ function hideError(inputElement, errorElement, config) {
   errorElement.textContent = inputElement.validationMessage;
 }
 
-function toogleButtonState(buttonElement, isActive, config) {
+function toggleButtonState(buttonElement, isActive, config) {
   if (isActive) {
     buttonElement.disabled = false;
     buttonElement.classList.remove(config.inactiveButtonClass);
@@ -34,14 +34,13 @@ function checkInputValidity(inputElement, formElement, config) {
 function setEventListener(formElement, config) {
   const inputList = formElement.querySelectorAll(config.inputSelector);
   const submitButtonElement = formElement.querySelector(config.submitButtonSelector);
-  toogleButtonState(submitButtonElement, formElement.checkValidity(), config);
-  /*formElement.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log ('Форма отправлена');
-  });*/
+  toggleButtonState(submitButtonElement, formElement.checkValidity(), config);
+  formElement.addEventListener('reset', () => {
+    toggleButtonState(submitButtonElement, false, config);
+  });
   [...inputList].forEach((inputItem) => {
     inputItem.addEventListener('input', (e) => {
-      toogleButtonState(submitButtonElement, formElement.checkValidity(), config);
+      toggleButtonState(submitButtonElement, formElement.checkValidity(), config);
       checkInputValidity(inputItem, formElement, config);
     })
   })
@@ -53,3 +52,4 @@ export function enableValidation(config) {
     setEventListener(formItem, config);
   })
 }
+

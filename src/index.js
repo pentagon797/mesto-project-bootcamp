@@ -1,11 +1,21 @@
 import './pages/index.css';
-import { elementCards, profileEditButton, popupProfile, editProfileName, editProfileDescription, profileName, profileDescription, placeEditButton, popupPlace, editPlaceForm, elementList, editProfileForm, popupPicture, configValidation, } from './components/constants';
+import { profileEditButton, popupProfile, editProfileName, editProfileDescription, profileName, profileDescription, placeEditButton, popupPlace, editPlaceForm, editProfileForm, popupPicture, configValidation, popupAvatar, avatarEditButton, profileAvatar, editAvatarForm, popupConfirmDelete } from './components/constants';
 
-import { createElementItem, editPlaceFormSubmit } from './components/element';
+import { handlePlaceFormSubmit, renderInitialCards } from './components/card';
 
-import { openPopup, handleClosePopup, editProfileFormSubmit } from './components/modal';
+import { openPopup, handleClosePopup, } from './components/modal';
+
+import { handleProfileFormSubmit, renderInitialProfile, handleAvatarFormSubmit } from './components/profile';
 
 import { enableValidation } from './components/validate';
+
+avatarEditButton.addEventListener('click', () => {
+  openPopup(popupAvatar);
+});
+
+profileAvatar.addEventListener('click', () => {
+  openPopup(popupAvatar);
+});
 
 profileEditButton.addEventListener('click', () => {
   openPopup(popupProfile);
@@ -15,19 +25,18 @@ profileEditButton.addEventListener('click', () => {
 
 placeEditButton.addEventListener('click', () => {
   openPopup(popupPlace);
-  editPlaceForm.reset();
 });
 
-elementCards.forEach(function (dataElement) {
-  const arrElementItem = createElementItem(dataElement);
-  elementList.append(arrElementItem);
-});
-
-editProfileForm.addEventListener('submit', editProfileFormSubmit);
-editPlaceForm.addEventListener('submit', editPlaceFormSubmit);
+editProfileForm.addEventListener('submit', handleProfileFormSubmit);
+editPlaceForm.addEventListener('submit', handlePlaceFormSubmit);
+editAvatarForm.addEventListener('submit', handleAvatarFormSubmit);
 
 popupProfile.addEventListener('click', (e) => handleClosePopup(e, popupProfile));
 popupPlace.addEventListener('click', (e) => handleClosePopup(e, popupPlace));
 popupPicture.addEventListener('click', (e) => handleClosePopup(e, popupPicture));
+popupAvatar.addEventListener('click', (e) => handleClosePopup(e, popupAvatar));
+popupConfirmDelete.addEventListener('click', (e) => handleClosePopup(e, popupConfirmDelete));
 
 enableValidation(configValidation);
+renderInitialCards();
+renderInitialProfile();

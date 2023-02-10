@@ -15,13 +15,16 @@
   <main>
     <section class="profile" aria-label="Профиль пользователя">
       <div class="profile__edit-container">
-        <img class="profile__avatar" src="<%=require('./images/Cousteau.jpg')%>" alt="Аватар пользователя">
+        <div class="profile__avatar-container">
+          <button class="profile__edit-avatar-button" type="button" aria-label="Редактировать аватар"></button>
+          <img class="profile__avatar" src="#" alt="Аватар пользователя">
+        </div>
         <div class="profile__info">
           <div class="profile__info-container">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__edit-button link-opacity" type="button" aria-label="Редактировать профиль"></button>
           </div>
-          <p class="profile__description">Исследователь океана</p>
+          <p class="profile__description"></p>
         </div>
       </div>
       <button class="profile__add-button link-opacity" type="button" aria-label="Добавить фото"></button>
@@ -45,7 +48,7 @@
           <input type="text" class="popup__input" placeholder="О себе" name="editProfileDescription" required autocomplete="off" minlength="2" maxlength="200">
           <span class="popup__input-error" id="editProfileDescription-error"></span>
         </label>
-        <button class="popup__save-buttton" type="submit" aria-label="Сохранить изменения">Сохранить</button>
+        <button class="popup__save-buttton" type="submit" aria-label="Сохранить изменения" name="popupSaveButtonProfile">Сохранить</button>
       </form>
       <button class="popup__close-buttton link-opacity" type="button" aria-label="Закрыть всплывающее окно"></button>
     </div>
@@ -62,7 +65,7 @@
           <input type="url" class="popup__input" placeholder="Ссылка на картинку" name="editPlaceURL" required autocomplete="off">
           <span class="popup__input-error" id="editPlaceURL-error"></span>
         </label>
-        <button class="popup__save-buttton" type="submit" aria-label="Добавить картинку">Создать</button>
+        <button class="popup__save-buttton" type="submit" aria-label="Добавить картинку" name="popupSaveButtonPlace">Создать</button>
       </form>
       <button class="popup__close-buttton link-opacity" type="button" aria-label="Закрыть всплывающее окно"></button>
     </div>
@@ -74,6 +77,28 @@
       <button class="popup__close-buttton link-opacity" type="button" aria-label="Закрыть всплывающее окно"></button>
     </div>
   </div>
+  <div class="popup popup_avatar">
+    <div class="popup__container">
+      <h3 class="popup__title">Обновить аватар</h3>
+      <form class="popup__edit-form" name="editAvatarForm" novalidate>
+        <label class="popup__label">
+          <input type="url" class="popup__input" placeholder="Ссылка на новый аватар" name="editAvatarURL" required autocomplete="off">
+          <span class="popup__input-error" id="editAvatarURL-error"></span>
+        </label>
+        <button class="popup__save-buttton" type="submit" aria-label="Изменить аватар" name="popupSaveButtonAvatar">Сохранить</button>
+      </form>
+      <button class="popup__close-buttton link-opacity" type="button" aria-label="Закрыть всплывающее окно"></button>
+    </div>
+  </div>
+  <div class="popup popup_confirm-delete">
+    <div class="popup__container">
+      <h3 class="popup__title">Вы уверены?</h3>
+      <form class="popup__edit-form" name="confirmDeleteForm" novalidate>
+        <button class="popup__save-buttton" type="submit" aria-label="Подтвердить удаление" name="popupSaveButtonConfirmDelete">Да</button>
+      </form>
+      <button class="popup__close-buttton link-opacity" type="button" aria-label="Закрыть всплывающее окно"></button>
+    </div>
+  </div>
   <template id="element__template">
     <li class="element__item">
       <img class="element__image">
@@ -81,6 +106,7 @@
       <div class="element__container">
         <h3 class="element__text"></h3>
         <button class="element__like-button link-opacity" type="button" aria-label="Лайкнуть фото"></button>
+        <p class="element__like-countner"></p>
       </div>
     </li>
   </template>

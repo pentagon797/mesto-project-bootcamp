@@ -6,4 +6,7 @@
   height: 19px;
   border: none;
   cursor: pointer;
+  position: absolute;
+  top: 19px;
+  left: 240px;
 }
