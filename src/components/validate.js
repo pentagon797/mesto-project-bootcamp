@@ -20,6 +20,13 @@ function toggleButtonState(buttonElement, isActive, config) {
   }
 }
 
+export function setStatusButton({ button, disabled, config, text }) {
+  toggleButtonState(button, disabled, config);
+  button.textContent = text;
+}
+
+
+
 function checkInputValidity(inputElement, formElement, config) {
   const isInputValid = inputElement.validity.valid;
   const errorElement = formElement.querySelector(`#${inputElement.name}-error`);

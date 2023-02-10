@@ -21,12 +21,3 @@ export function handleClosePopup(e, modal) {
     closePopup(modal);
   }
 }
-
-export function setStatusButton({button, text, disabled}) {
-  if(!disabled) {
-    button.disabled = false
-  } else {
-    button.disabled = 'disabled'
-  }
-  button.textContent = text;
-}

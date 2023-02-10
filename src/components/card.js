@@ -1,7 +1,7 @@
 let userID = null;
 let deleteCardConfirm = null;
 
-import { elementTemplate, elementList, popupImage, popupFigcaption, editPlaceName, editPlaceURL, popupPlace, popupPicture, popupConfirmDelete, confirmDeleteForm, popupSaveButtonPlace } from './constants';
+import { elementTemplate,  popupImage, popupFigcaption, popupPicture, popupConfirmDelete, confirmDeleteForm, popupSaveButtonPlace } from './constants';
 import { openPopup, closePopup, setStatusButton } from './modal';
 import { addCard, removeCard, getAllInfo, putLike } from './api';
 
@@ -25,8 +25,10 @@ export function createElementItem(dataElementItem, userID) {
     putLike(dataElementItem._id, isLiked(dataElementItem.likes, userID))
       .then(updateCardLikes => {
         dataElementItem.likes = updateCardLikes.likes;
-        elementLikeButton.classList.toggle('element__like-button_active');
         updateLikes(dataElementItem.likes, userID);
+      })
+      .catch((error) => {
+        console.log(error);
       })
   }
   function updateLikes (likes, userID) {
@@ -69,47 +71,6 @@ function openPopupConfirm(idCard, elementItem) {
   };
   confirmDeleteForm.addEventListener('submit', deleteCardConfirm),
     openPopup(popupConfirmDelete);
-}
-
-export function handlePlaceFormSubmit(e) {
-  e.preventDefault();
-  setStatusButton({
-    button: popupSaveButtonPlace,
-    text: 'Создаем...',
-    disabled: true
-  })
-  addCard({
-    name: editPlaceName.value,
-    link: editPlaceURL.value
-  })
-    .then((newDataCard) => {
-      renderCards(newDataCard, elementList, 'prepend', userID);
-      e.target.reset();
-      closePopup(popupPlace);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-    .finally(() => {
-      setStatusButton({
-        button: popupSaveButtonPlace,
-        text: 'Создать',
-        disabled: false
-      })
-    })
-}
-
-export function renderInitialCards() {
-  getAllInfo()
-    .then(([dataCards, userDataID]) => {
-      userID = userDataID._id;
-      dataCards.forEach(function (dataItem) {
-        renderCards(dataItem, elementList, 'append', userID);
-      })
-    })
-    .catch((error) => {
-      console.log(error);
-    })
 }
 
 export function renderCards(data, containerNode, position = 'append', userID) {
